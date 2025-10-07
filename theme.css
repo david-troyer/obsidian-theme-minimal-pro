@@ -1,34 +1,152 @@
+/* -------------------------------------------------------------------- */
+
+.theme-dark {
+	--quote-qutter-background: var(--color-base-25);
+}
+
+.theme-light {
+	--quote-qutter-background: var(--color-base-25);
+}
+
 body {
-	--radius-s: 0px;
-	--radius-m: 0px;
-	--radius-l: 0px;
-	--input-radius: 0px;
-	--tab-radius-active: 0px;
-	--checkbox-radius: 0px;
-	--toggle-radius: 0px;
-	--toggle-thumb-radius: 0px;
-	--slider-thumb-radius: 0px;
+	--callout-radius: 8px;
+	--callout-padding: var(--size-4-3) var(--size-4-3) var(--size-4-3) var(--size-4-5);
 }
 
-.workspace-tab-header.is-active::before, .workspace-tab-header.is-active::after {
-	display: none;
+/* ==================================================================== */
+/*                                EDITOR                                */
+/* ==================================================================== */
+
+/* --------------------------- BLOCK QUOTES --------------------------- */
+
+.markdown-rendered blockquote {
+	position: relative;
+	border-left: 0;
+	padding: 0 0 0 20px;
 }
 
-svg * {
-	stroke-linecap: square;
-	stroke-linejoin: miter;
-	rx: 0;
-	ry: 0;
+.markdown-rendered blockquote:after {
+	content: '';
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	bottom: 2px;
+	width: 4px;
+	background-color: var(--quote-qutter-background);
+	border-radius: var(--radius-s);
 }
 
-.menu {
-	padding: var(--size-2-1);
+.callout > .callout-content {
+	--quote-qutter-background: rgba(var(--callout-color), 0.15);
 }
 
-.menu-item {
-	padding: var(--size-4-1) var(--size-4-2);
+.callout .callout-title {
+	gap: 8px;
 }
 
-.menu-separator {
-	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+/* edit mode */
+.markdown-source-view.is-live-preview.markdown-source-view.is-live-preview .HyperMD-quote:before, .markdown-source-view .cm-blockquote-border:before {
+	border-inline-start: 0px solid transparent;
+	width: 3px;
+	background-color: var(--quote-qutter-background);
+	border-radius: var(--radius-s);
+	/* border-inline-start: 4px solid var(--quote-qutter-background) !important; */
 }
+
+/* ----------------------------- CALLOUTS ----------------------------- */
+
+.callout {
+	position: relative;
+}
+
+.callout::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 1px;
+	bottom: 1px;
+	width: 10px;
+	border-left: 4px solid rgb(var(--callout-color));
+	/* border-radius: 6px; */
+}
+
+.callout-title-inner {
+	color: var(--text-normal);
+	font-weight: 600;
+}
+
+.callout > .callout-content > *:first-child {
+	margin-block-start: 8px;
+	margin-top: 8px;
+}
+
+.callout > .callout-content > *:last-child {
+	margin-block-end: 0;
+	margin-botton: 0;
+}
+
+/* ----------------------------- COMMENTS ----------------------------- */
+
+/* this should fix colors in comments */
+.cm-comment.cm-strong,
+.cm-comment .cm-strong,
+.cm-comment.cm-em,
+.cm-comment .cm-em,
+.cm-comment.cm-quote.cm-quote,
+.cm-comment .cm-quote.cm-quote {
+	color: var(--code-comment)
+}
+
+/* ------------------------------ LINKS ------------------------------- */
+
+.markdown-rendered .internal-link {
+	text-decoration: none;
+}
+
+.markdown-rendered .internal-link:hover {
+	text-decoration: underline;
+}
+
+/* ------------------------------ LISTS ------------------------------- */
+
+/* rendered view */
+.markdown-rendered.show-indentation-guide li > ul::before,
+.markdown-rendered.show-indentation-guide li > ol::before
+{
+	left: calc(-1em - 1px);
+
+	border: none !important;
+	background-image: linear-gradient(var(--indentation-guide-color) 40%, rgba(255,255,255,0) 0%);
+	background-position: right;
+	background-size: 1px 5px;
+	background-repeat: repeat-y;
+	width: 1px;
+}
+
+/* source view */
+.markdown-source-view.mod-cm6 .cm-indent::before {
+	transform: translateX(calc(0.15em + 2px));
+
+	border: none !important;
+	background-image: linear-gradient(var(--indentation-guide-color) 40%, rgba(255,255,255,0) 0%);
+	background-position: right;
+	background-size: 1px 5px;
+	background-repeat: repeat-y;
+	width: 1px;
+}
+
+/* navigation view */
+.nav-folder.mod-root .nav-folder > .nav-folder-children,
+.tree-item-children {
+	border-left: 1px dashed var(--nav-indentation-guide-color)
+}
+
+div>ol>li::marker {
+	font-family: var(--font-monospace)
+}
+
+/* ==================================================================== */
+/*                               WORKSPACE                              */
+/* ==================================================================== */
+
+
