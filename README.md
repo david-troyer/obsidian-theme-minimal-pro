@@ -1,4 +1,4 @@
-# Minimal Pro Theme
+# Minimalist Studio Theme
 This is a theme that aims to improve the styles of **callouts**, **blockquotes** and lists,
 together with some minor tweaks to make it overall prettier, while keeping the typical Obsidian design.
  
