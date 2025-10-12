@@ -56,7 +56,7 @@ body {
 	border-radius: var(--radius-s);
 }
 
-/* edit mode */
+/* live preview mode */
 .markdown-source-view.is-live-preview.markdown-source-view.is-live-preview .HyperMD-quote:before,
 .markdown-source-view .cm-blockquote-border:before {
 	border-inline-start: 0px solid transparent;
