@@ -6,4 +6,4 @@ together with some minor tweaks to make it overall prettier, while keeping the t
 
 ## Installation
 1. Click `Settings → Appearance → Theme → Manage`
-2. Search for "Minimal Pro" and click "Install and use"
+2. Search for "Minimalist Studio" and click "Install and use"
